@@ -26,9 +26,13 @@ class MessageSerializer(serializers.ModelSerializer):
         validated_data['sender'] = user
         return super().create(validated_data)
         
+# class MessageStatusSerializer(serializers.ModelSerializer):
+#     message = MessageSerializer(read_only=True)
+#     user = UserSerializer(read_only=True)
+#     class Meta:
+#         model=MessageStatus
+#         fields=['id','message','user','is_read','read_at']        
 class MessageStatusSerializer(serializers.ModelSerializer):
-    message = MessageSerializer(read_only=True)
-    user = UserSerializer(read_only=True)
     class Meta:
-        model=MessageStatus
-        fields=['id','message','user','is_read','read_at']        
+        model = MessageStatus
+        fields = ['id', 'message', 'user', 'is_read', 'read_at']
